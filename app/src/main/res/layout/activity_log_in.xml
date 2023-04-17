@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="156dp"
         android:layout_height="51dp"
-        android:text="FindWorker"
+        android:text="FindWorkerr"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
