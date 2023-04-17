@@ -7,12 +7,84 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginEnd="100dp"
+        android:text="What are you looking for?"
+        android:textColor="#050505"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.059" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="175dp"
+        android:layout_height="70dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Work category"
+        android:textColor="#000000"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="145dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="175dp"
+        android:layout_height="70dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Location"
+        android:textColor="#000000"
+        tools:layout_editor_absoluteX="220dp"
+        tools:layout_editor_absoluteY="145dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="175dp"
+        android:layout_height="70dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Sort"
+        android:textColor="#000000"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="233dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="158dp"
+        android:layout_height="61dp"
+        android:backgroundTint="#3F51B5"
+        android:text="Search"
+        android:textColor="#F8F8F8"
+        app:cornerRadius="30dp"
+        tools:layout_editor_absoluteX="220dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Results:"
+        android:textColor="#101010"
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="323dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="369dp"
+        android:layout_height="39dp"
+        android:background="@drawable/roundtextstyle"
+        android:backgroundTint="#E6F5F6"
+        android:padding="10dp"
+        android:text="Make a search"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="#050505"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="359dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
