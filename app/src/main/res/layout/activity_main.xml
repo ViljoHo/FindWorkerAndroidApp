@@ -26,12 +26,11 @@
         android:id="@+id/button"
         android:layout_width="175dp"
         android:layout_height="70dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="504dp"
         android:backgroundTint="#FFFFFF"
         android:text="Work category"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,10 +43,9 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.927"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.217" />
+        app:layout_constraintVertical_bias="0.777" />
 
     <Button
         android:id="@+id/button3"
@@ -58,10 +56,10 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintHorizontal_bias="0.292"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.352" />
+        app:layout_constraintVertical_bias="0.833" />
 
     <Button
         android:id="@+id/searchButton"
@@ -124,5 +122,68 @@
         app:menu="@menu/bottom_nav_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="175dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="136dp"
+        android:hint="@string/selectwc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.029"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompTextwc"
+            android:layout_width="155dp"
+            android:layout_height="42dp"
+            android:inputType="none"
+            android:text="Work category"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="148dp"></AutoCompleteTextView>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="175dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:hint="@string/selectloc"
+        tools:layout_editor_absoluteX="220dp"
+        tools:layout_editor_absoluteY="144dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompTextloc"
+            android:layout_width="175dp"
+            android:layout_height="60dp"
+            android:inputType="none"
+            android:text="Location"></AutoCompleteTextView>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="175dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:hint="@string/selectsort"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="224dp">
+
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompTextsort"
+            android:layout_width="175dp"
+            android:layout_height="60dp"
+            android:inputType="none"
+            android:text="Sort"></AutoCompleteTextView>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

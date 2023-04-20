@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -18,6 +22,11 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
     private Button searchButton;
 
+    String[] locationItems = {"Oulu", "Helsinki", "Tampere"};
+    String[] workCategories = {"ikkunanpesu", "pihatyöt", "imuroonti"};
+
+    AutoCompleteTextView autoCompleteTextView;
+    ArrayAdapter<String> arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +41,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        autoCompleteTextView = findViewById(R.id.autoCompTextloc);
+        arrayAdapter = new ArrayAdapter<String>(this,R.layout.list_item, locationItems);
+        autoCompleteTextView.setAdapter(arrayAdapter);
+
+        autoCompleteTextView = findViewById(R.id.autoCompTextwc);
+        arrayAdapter = new ArrayAdapter<String>(this,R.layout.list_item, workCategories);
+        autoCompleteTextView.setAdapter(arrayAdapter);
+
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String locationItem = parent.getItemAtPosition(position).toString();
+                Toast.makeText(MainActivity.this,"item " + locationItem, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //testaus
     }
