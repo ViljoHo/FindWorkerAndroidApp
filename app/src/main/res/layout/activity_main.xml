@@ -64,7 +64,7 @@
         app:layout_constraintVertical_bias="0.352" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/searchButton"
         android:layout_width="158dp"
         android:layout_height="61dp"
         android:backgroundTint="#3F51B5"
@@ -93,7 +93,7 @@
         app:layout_constraintVertical_bias="0.457" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/results"
         android:layout_width="369dp"
         android:layout_height="39dp"
         android:background="@drawable/roundtextstyle"
