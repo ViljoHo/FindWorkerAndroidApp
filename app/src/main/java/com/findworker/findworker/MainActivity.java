@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     String[] locationItems = {"Oulu", "Helsinki", "Tampere"};
     String[] workCategories = {"ikkunanpesu", "pihatyöt", "imuroonti"};
 
+    String[] sort = {"Hinta laskeva", "Hinta nouseva", "Paras arvostelu"};
+
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> arrayAdapter;
     @Override
@@ -47,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
         autoCompleteTextView = findViewById(R.id.autoCompTextwc);
         arrayAdapter = new ArrayAdapter<String>(this,R.layout.list_item, workCategories);
+        autoCompleteTextView.setAdapter(arrayAdapter);
+
+        autoCompleteTextView = findViewById(R.id.autoCompTextsort);
+        arrayAdapter = new ArrayAdapter<String>(this,R.layout.list_item, sort);
         autoCompleteTextView.setAdapter(arrayAdapter);
 
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
