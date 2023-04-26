@@ -23,25 +23,23 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.getMenu().findItem((R.id.navAdd)).setChecked(true);
-        //getSupportFragmentManager().beginTransaction().replace(R.id.openPageAdd, addfrag).commit();
+        bottomNavigationView.setSelectedItemId(R.id.navAdd);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch(item.getItemId()){
                     case R.id.navAdd:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.openPageAdd, addfrag).commit();
                         return true;
 
                     case R.id.navProfile:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.openPageAdd, profilefrag).commit();
                         startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.navHome:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.openPageAdd, homefrag).commit();
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;

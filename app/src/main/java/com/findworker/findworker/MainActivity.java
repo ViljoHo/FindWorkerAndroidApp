@@ -75,30 +75,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.getMenu().findItem((R.id.navHome)).setChecked(true);
-        //getSupportFragmentManager().beginTransaction().replace(R.id.openPage, homefrag).commit();
-
-
+        bottomNavigationView.setSelectedItemId(R.id.navHome);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch(item.getItemId()){
                     case R.id.navHome:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.openPage, homefrag).commit();
-                        bottomNavigationView.getMenu().findItem((R.id.navHome)).setChecked(true);
                         return true;
 
                     case R.id.navProfile:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.openPage, profilefrag).commit();
                         startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
-                        bottomNavigationView.getMenu().findItem((R.id.navProfile)).setChecked(true);
+                        overridePendingTransition(0,0);
                         return true;
-
                     case R.id.navAdd:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.openPage, addfrag).commit();
                         startActivity(new Intent(getApplicationContext(),AddActivity.class));
-                        bottomNavigationView.getMenu().findItem((R.id.navAdd)).setChecked(true);
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
