@@ -129,7 +129,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://10.0.2.2:8000/backend/search/";
+        //String url = "http://10.0.2.2:8000/backend/search/";
+        String url = "http://192.168.0.155:8000/backend/search/";
 
         // Request a string response from the provided URL.
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
