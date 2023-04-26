@@ -28,11 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private Button searchButton;
 
     BottomNavigationView bottomNavigationView;
-    Home homefrag = new Home();
-    Add addfrag = new Add();
-    Profile profilefrag = new Profile();
-
-
     String[] locationItems = {"Oulu", "Helsinki", "Tampere"};
     String[] workCategories = {"Ikkunanpesu", "Pihatyöt", "Imurointi"};
 

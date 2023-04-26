@@ -13,9 +13,6 @@ import com.google.android.material.navigation.NavigationBarView;
 public class AddActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
-    Home homefrag = new Home();
-    Add addfrag = new Add();
-    Profile profilefrag = new Profile();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
