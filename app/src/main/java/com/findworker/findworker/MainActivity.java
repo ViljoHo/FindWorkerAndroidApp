@@ -1,9 +1,11 @@
 package com.findworker.findworker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +23,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
     private Button searchButton;
     private ListView resultsView;
 
+    BottomNavigationView bottomNavigationView;
     String[] locationItems = {"Oulu", "Helsinki", "Tampere"};
-    String[] workCategories = {"ikkunanpesu", "pihatyöt", "imuroonti"};
+    String[] workCategories = {"Ikkunanpesu", "Pihatyöt", "Imurointi"};
 
     String[] sort = {"Hinta laskeva", "Hinta nouseva", "Paras arvostelu"};
 
@@ -73,7 +78,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //testaus
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.navHome);
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.navHome:
+                        return true;
+
+                    case R.id.navProfile:
+                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.navAdd:
+                        startActivity(new Intent(getApplicationContext(),AddActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
+
     }
 
     private void makeSearch() {
@@ -156,7 +183,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-    //morocdd
 }
