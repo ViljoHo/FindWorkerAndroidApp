@@ -3,11 +3,13 @@ package com.findworker.findworker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,8 +26,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private Button searchButton;
+    private ListView resultsView;
 
     String[] locationItems = {"Oulu", "Helsinki", "Tampere"};
     String[] workCategories = {"ikkunanpesu", "pihatyöt", "imuroonti"};
@@ -104,19 +109,18 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        // Display the first 500 characters of the response string.
-                        System.out.println(response);
+
+
                         try {
-                            String testi = response.get(1).toString();
-                            System.out.println(testi);
+                            showResults(response);
+                            textView.setText(response.get(0).toString());
+
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
-                        try {
-                            textView.setText("Response is: " + response.get(0).toString());
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
+
+
+
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -128,6 +132,25 @@ public class MainActivity extends AppCompatActivity {
         // Add the request to the RequestQueue.
         queue.add(jsonArrayRequest);
 
+
+    }
+
+    private void showResults(JSONArray response) throws JSONException {
+        resultsView = (ListView) findViewById(R.id.resultsview);
+
+        ArrayList<Object> results = new ArrayList<Object>();
+
+        //Convert JSONArray to Arraylist
+
+        if (response != null) {
+            for (int i=0; i<response.length(); i++) {
+                results.add(response.get(i));
+            }
+        }
+
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, results);
+
+        resultsView.setAdapter(arrayAdapter);
 
 
 
