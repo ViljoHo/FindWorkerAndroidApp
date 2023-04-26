@@ -1,8 +1,11 @@
 package com.findworker.findworker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,14 +19,22 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     private Button searchButton;
 
+    BottomNavigationView bottomNavigationView;
+    Home homefrag = new Home();
+    Add addfrag = new Add();
+    Profile profilefrag = new Profile();
+
+
     String[] locationItems = {"Oulu", "Helsinki", "Tampere"};
-    String[] workCategories = {"ikkunanpesu", "pihatyöt", "imuroonti"};
+    String[] workCategories = {"Ikkunanpesu", "Pihatyöt", "Imurointi"};
 
     String[] sort = {"Hinta laskeva", "Hinta nouseva", "Paras arvostelu"};
 
@@ -63,7 +74,37 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //testaus
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.getMenu().findItem((R.id.navHome)).setChecked(true);
+        //getSupportFragmentManager().beginTransaction().replace(R.id.openPage, homefrag).commit();
+
+
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.navHome:
+                        //getSupportFragmentManager().beginTransaction().replace(R.id.openPage, homefrag).commit();
+                        bottomNavigationView.getMenu().findItem((R.id.navHome)).setChecked(true);
+                        return true;
+
+                    case R.id.navProfile:
+                        //getSupportFragmentManager().beginTransaction().replace(R.id.openPage, profilefrag).commit();
+                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                        bottomNavigationView.getMenu().findItem((R.id.navProfile)).setChecked(true);
+                        return true;
+
+                    case R.id.navAdd:
+                        //getSupportFragmentManager().beginTransaction().replace(R.id.openPage, addfrag).commit();
+                        startActivity(new Intent(getApplicationContext(),AddActivity.class));
+                        bottomNavigationView.getMenu().findItem((R.id.navAdd)).setChecked(true);
+                        return true;
+                }
+                return false;
+            }
+        });
+
     }
 
     private void makeSearch() {
@@ -90,7 +131,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-    //morocdd
 }
