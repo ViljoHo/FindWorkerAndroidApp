@@ -23,47 +23,6 @@
         app:layout_constraintVertical_bias="0.059" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="175dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="144dp"
-        android:backgroundTint="#FFFFFF"
-        android:text="Work category"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="175dp"
-        android:layout_height="70dp"
-        android:backgroundTint="#FFFFFF"
-        android:text="Location"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.927"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.217" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="175dp"
-        android:layout_height="70dp"
-        android:backgroundTint="#FFFFFF"
-        android:text="Sort"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.352" />
-
-    <Button
         android:id="@+id/searchButton"
         android:layout_width="158dp"
         android:layout_height="61dp"
@@ -73,10 +32,10 @@
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintHorizontal_bias="0.916"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.347" />
+        app:layout_constraintVertical_bias="0.28" />
 
     <TextView
         android:id="@+id/textView"
@@ -124,5 +83,78 @@
         app:menu="@menu/bottom_nav_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="175dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:hint="@string/selectwc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.149">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompTextwc"
+            android:layout_width="175dp"
+            android:layout_height="60dp"
+            android:inputType="none"
+            android:text="Work category">
+
+        </AutoCompleteTextView>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="175dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="8dp"
+        android:hint="@string/selectloc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.434"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.148">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompTextloc"
+            android:layout_width="175dp"
+            android:layout_height="60dp"
+            android:inputType="none"
+            android:text="Location">
+
+        </AutoCompleteTextView>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="175dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:hint="@string/selectsort"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.263">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompTextsort"
+            android:layout_width="175dp"
+            android:layout_height="60dp"
+            android:inputType="none"
+            android:text="Sort"></AutoCompleteTextView>
+    </com.google.android.material.textfield.TextInputLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

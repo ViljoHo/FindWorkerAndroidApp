@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FindWorker</string>
+    <string name="selectloc">Location</string>
+    <string name="selectwc">Work category</string>
+    <string name="selectsort">Sort</string>
+
 </resources>
