@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     String[] locationItems = {"Oulu", "Helsinki", "Tampere"};
     String[] workCategories = {"Ikkunanpesu", "Pihatyöt", "Imurointi"};
-
     String[] sort = {"Hinta laskeva", "Hinta nouseva", "Paras arvostelu"};
 
     AutoCompleteTextView autoCompleteTextView;
