@@ -23,7 +23,6 @@
         android:id="@+id/toolBarBack"
         android:layout_width="90dp"
         android:layout_height="43dp"
-        android:layout_centreVertical="true"
         android:src="@drawable/baseline_arrow_left_24"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
