@@ -14,14 +14,6 @@
         android:text="Profile page - coming later"
         android:textSize="30dp"></TextView>
 
-    <FrameLayout
-        android:id="@+id/openPageProfile"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNavigationView"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
 
         android:id="@+id/bottomNavigationView"
