@@ -1,7 +1,8 @@
 package com.findworker.findworker;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,8 +21,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -35,6 +34,10 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private Button searchButton;
     private ListView resultsView;
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     BottomNavigationView bottomNavigationView;
     String[] locationItems = {"Oulu", "Helsinki", "Tampere"};
@@ -124,13 +127,14 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonObjectRequest);*/
 
-        final TextView textView = (TextView) findViewById(R.id.results);
+        TextView results = (TextView) findViewById(R.id.resultsText);
         // ...
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         //String url = "http://10.0.2.2:8000/backend/search/";
-        String url = "http://192.168.0.155:8000/backend/search/";
+        //String url = "http://192.168.0.155:8000/backend/search/";
+        String url = "https://findworkerbackend.herokuapp.com/backend/search";
 
         // Request a string response from the provided URL.
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -141,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
 
                         try {
                             showResults(response);
-                            textView.setText(response.get(0).toString());
 
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
@@ -153,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                textView.setText("That didn't work!");
+                results.setText("That didn't work!");
             }
         });
 
@@ -164,21 +167,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showResults(JSONArray response) throws JSONException {
-        resultsView = (ListView) findViewById(R.id.resultsview);
+        //resultsView = (ListView) findViewById(R.id.resultsview);
+        recyclerView = (RecyclerView) findViewById(R.id.resultsListView);
 
-        ArrayList<Object> results = new ArrayList<Object>();
+        ArrayList<JSONObject> results = new ArrayList<JSONObject>();
 
         //Convert JSONArray to Arraylist
 
         if (response != null) {
             for (int i=0; i<response.length(); i++) {
-                results.add(response.get(i));
+
+                results.add(response.getJSONObject(i));
             }
         }
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, results);
+        recyclerView.setHasFixedSize(true);
 
-        resultsView.setAdapter(arrayAdapter);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        mAdapter = new RecyleViewAdapter(results, MainActivity.this);
+        recyclerView.setAdapter(mAdapter);
+
+        //ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, results);
+
+        //resultsView.setAdapter(arrayAdapter);
+
+
 
 
 
