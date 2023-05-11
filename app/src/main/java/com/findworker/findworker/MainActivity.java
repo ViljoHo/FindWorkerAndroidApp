@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,12 +25,15 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     private Button searchButton;
@@ -40,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
     BottomNavigationView bottomNavigationView;
-    String[] locationItems = {"Oulu", "Helsinki", "Tampere"};
-    String[] workCategories = {"Ikkunanpesu", "Pihatyöt", "Imurointi"};
+    String[] locationItems = {"All", "Oulu", "Helsinki", "Kuopio", "Vaasa"};
+    String[] workCategories = {"All", "Window cleaning", "House painting", "Other"};
 
     String[] sort = {"Hinta laskeva", "Hinta nouseva", "Paras arvostelu"};
 
@@ -108,35 +112,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void makeSearch() {
 
-        /*TextView results = (TextView) findViewById(R.id.results);
 
-        String url = "http://10.0.2.2:8000/backend/search/";
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                results.setText(response.toString());
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                results.setText("error");
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(jsonObjectRequest);*/
 
         TextView results = (TextView) findViewById(R.id.resultsText);
-        // ...
+
+        TextInputLayout workcategoryInput = (TextInputLayout) findViewById(R.id.textInputLayout);
+        TextInputLayout locationInput = (TextInputLayout) findViewById(R.id.textInputLayout3);
+        //TextInputLayout sort = (TextInputLayout) findViewById(R.id.textInputLayout);
+
+        String workcategory = workcategoryInput.getEditText().getText().toString();
+        String location = locationInput.getEditText().getText().toString();
+
+
+        int workcategoryIndex = Arrays.asList(workCategories).indexOf(workcategory);
+        int locationIndex = Arrays.asList(locationItems).indexOf(location);
+
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        //String url = "http://10.0.2.2:8000/backend/search/";
-        //String url = "http://192.168.0.155:8000/backend/search/";
-        String url = "https://findworkerbackend.herokuapp.com/backend/search";
+        String url = "https://findworkerbackend.herokuapp.com/backend/search/?city=" + String.valueOf(locationIndex) + "&service=" + String.valueOf(workcategoryIndex);
 
-        // Request a string response from the provided URL.
+
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
